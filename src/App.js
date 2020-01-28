@@ -1,26 +1,77 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import RepoList from './components/RepoList/RepoList'
+import UserProfile from './components/UserProfile/UserProfile'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { connect } from 'react-redux';
+// import { setSearch, setFilterLang } from './actions';
+
+const mapStateToProps = (state) => {
+  return {
+    searchText: state.searchRepo.searchText,
+    filterLang: state.filterRepoByLang.filterLang,
+    filterType: state.filterRepoByType.filterType
+  }
 }
 
-export default App;
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onSearchChange: (event) => dispatch(setSearch(event.target.value)),
+//     onLangFilterChange: (option) => dispatch(setFilterLang(option)),
+//     onTypeFilterChange: (option) => dispatch(setFilterType(option))
+//   }
+// }
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+      repos: []
+    }
+  }
+  componentDidMount() {
+    fetch("https://api.github.com/users/supreetsingh247/repos").then(response => response.json())
+      .then(repo => { this.setState({ repos: repo }) });
+    fetch("https://api.github.com/users/supreetsingh247").then(response => response.json())
+      .then(data => { this.setState({ user: data }) });
+  }
+  render() {
+    const { repos } = this.state;
+    const { searchText, onSearchChange, onLangFilterChange, filterLang, filterType } = this.props;
+    let filteredRepos = repos.filter(repo => repo.name.toLowerCase().includes(searchText.toLowerCase()));
+    let langs = filteredRepos.map(repo => repo.language);
+    const uniqueLang = [...new Set(langs)];
+    langs = uniqueLang.filter(lang => lang != null)
+    console.log(uniqueLang);
+    const langValues = langs.map(lang => ({ value: lang, label: lang }))
+    langValues.unshift({ value: "", label: "All" })
+    if (filterLang !== "") {
+      filteredRepos = filteredRepos.filter(repo => repo.language === filterLang);
+    }
+    if (filterType === "Sources") {
+      filteredRepos = filteredRepos.filter(repo => repo.fork === false);
+    }
+    if (filterType === "Archived") {
+      filteredRepos = filteredRepos.filter(repo => repo.archived === true);
+    }
+    if (filterType === "Forks") {
+      filteredRepos = filteredRepos.filter(repo => repo.fork === true);
+    }
+
+    return (
+      <div className="App">
+        <div className="temp-top-nav">
+          <hr />
+        </div>
+        <div className="repo-page">
+          <UserProfile data={this.state.user} />
+          <RepoList repos={filteredRepos} onSearchChange={onSearchChange} langValues={langValues} onLangFilterChange={onLangFilterChange} />
+        </div>
+      </div >
+    );
+  }
+}
+
+
+export default connect(mapStateToProps)(App);

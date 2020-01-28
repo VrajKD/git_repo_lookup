@@ -1,0 +1,80 @@
+.repo-card{
+    /* display: block; */
+    display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding:1.5em 0;
+    /* border-top: 1px solid lightgray; */
+    border-bottom: 1px solid lightgray;
+}
+.repo-card-left{
+    width:75%;
+}
+.repo-card-name{
+    color:#0366D6;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 600;
+}
+.repo-card-name:hover{
+    text-decoration: underline;
+}
+.repo-card-fork{
+    font-size: 10px;
+    color: #586069;
+    margin-top: 10px;
+}
+.repo-card-desc{
+    margin-top: 10px;
+    font-size: 14px;
+    color: #586069;
+    word-wrap: normal;
+    width: 85%;
+}
+.repo-card-private{
+    font-size: 12px;
+    border: 1px solid lightgrey;
+    color:#586070;
+    padding:2px 7px;
+    margin-left: 10px;
+    vertical-align: text-top;
+}
+.repo-card-footer{
+    margin-top: 18px;
+    font-size: 12px;
+    color: #586069;
+}
+.repo-language{
+    margin-right: 20px;
+}
+.repo-language-circle{
+    height: 10px;
+    width: 10px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background-color: yellow;
+    display: inline-block;
+}
+.repo-members{
+    margin-right: 20px;
+}
+.repo-members-icon{
+    font-size: 12px;
+    margin-right: 8px;
+}
+.repo-card-right{
+    width: 25%;
+}
+.repo-star{
+    text-align: center;
+    padding:5px 10px;
+    font-size: 12px;
+    color:#24292e;
+    background-color: #EFF3F6;
+    border: 1px solid rgba(27,31,35,.2);
+    border-radius:10% ;
+}
+.repo-star-icon{
+    margin-right: 5px;
+}
+
+
