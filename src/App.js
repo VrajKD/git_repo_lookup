@@ -2,8 +2,6 @@ import React from 'react';
 import './App.css'
 import RepoList from './components/RepoList/RepoList'
 import UserProfile from './components/UserProfile/UserProfile'
-import { USER_DATA } from './user'
-import { REPO_DATA } from './repos'
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -31,20 +29,18 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
-    this.setState({ repos: REPO_DATA, user: USER_DATA })
-    // fetch("https://api.github.com/users/supreetsingh247/repos").then(response => response.json())
-    //   .then(repo => { this.setState({ repos: repo }) });
-    // fetch("https://api.github.com/users/supreetsingh247").then(response => response.json())
-    //   .then(data => { this.setState({ user: data }) });
+    fetch("https://api.github.com/users/supreetsingh247/repos").then(response => response.json())
+      .then(repo => { this.setState({ repos: repo }) });
+    fetch("https://api.github.com/users/supreetsingh247").then(response => response.json())
+      .then(data => { this.setState({ user: data }) });
   }
   render() {
     const { repos } = this.state;
-    const { searchText, onSearchChange, onLangFilterChange, filterLang, filterType } = this.props;
+    const { searchText, filterLang, filterType } = this.props;
     let filteredRepos = repos.filter(repo => repo.name.toLowerCase().includes(searchText.toLowerCase()));
     let langs = filteredRepos.map(repo => repo.language);
     const uniqueLang = [...new Set(langs)];
     langs = uniqueLang.filter(lang => lang != null)
-    console.log(uniqueLang);
     const langValues = langs.map(lang => ({ value: lang, label: lang }))
     langValues.unshift({ value: "", label: "All" })
     if (filterLang !== "") {
@@ -67,7 +63,7 @@ class App extends React.Component {
         </div>
         <div className="repo-page">
           <UserProfile data={this.state.user} />
-          <RepoList repos={filteredRepos} onSearchChange={onSearchChange} langValues={langValues} onLangFilterChange={onLangFilterChange} />
+          <RepoList repos={filteredRepos} langValues={langValues} />
         </div>
       </div >
     );

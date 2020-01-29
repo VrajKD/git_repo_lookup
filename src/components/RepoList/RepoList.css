@@ -2,6 +2,11 @@
     width:100%;
     padding-left: 5%;
 }
+.result-count{
+    padding: 1.5% 0;
+    border-bottom:1px solid lightgray;
+    width: 100%;
+}
 
 @media (orientation: portrait) and (max-width : 1000px){
     .repo-list{
