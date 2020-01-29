@@ -5,7 +5,7 @@ import { faUserFriends, faMapMarkerAlt, faEnvelope } from '@fortawesome/free-sol
 
 class UserProfile extends React.Component {
     render() {
-        const { avatar_url, bio, company, location, name,login } = this.props.data;
+        const { avatar_url, bio, company, location, name, login } = this.props.data;
         return (
             <div className="user-profile">
                 <div className="user-image">

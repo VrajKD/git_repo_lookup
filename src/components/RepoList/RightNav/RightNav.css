@@ -6,24 +6,24 @@
     border-bottom: 1px solid lightgray;
 }
 .right-list-item{
-    padding:8px 20px 16px 20px;
+    padding:0.5em 1.25em 1em 1.25em;
     border-bottom: 3px solid white ;
-    font-size: 14px;
+    font-size: 0.85em;
 }
 .right-list-item.active{
-    border-bottom: 3px solid #e36209 ;
+    border-bottom: 0.2em solid #e36209 ;
     font-weight: 600;
 }
 
 .right-list-item:hover{
-    border-bottom: 3px solid darkgray ;
+    border-bottom: 0.2em solid darkgray ;
 }
 
 .repo-count{
     background-color: gainsboro;
     font-weight: 600;
-    padding: 3px 5px;
-    font-size: 12px;
+    padding: 0.2em 0.35em;
+    font-size: 0.7em;
     border-radius: 30%;
-    margin-left: 8px;
+    margin-left: 0.5em;
 }

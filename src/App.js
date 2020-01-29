@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css'
 import RepoList from './components/RepoList/RepoList'
 import UserProfile from './components/UserProfile/UserProfile'
-
+import { USER_DATA } from './user'
+import { REPO_DATA } from './repos'
 import { connect } from 'react-redux';
-// import { setSearch, setFilterLang } from './actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -31,10 +31,11 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
-    fetch("https://api.github.com/users/supreetsingh247/repos").then(response => response.json())
-      .then(repo => { this.setState({ repos: repo }) });
-    fetch("https://api.github.com/users/supreetsingh247").then(response => response.json())
-      .then(data => { this.setState({ user: data }) });
+    this.setState({ repos: REPO_DATA, user: USER_DATA })
+    // fetch("https://api.github.com/users/supreetsingh247/repos").then(response => response.json())
+    //   .then(repo => { this.setState({ repos: repo }) });
+    // fetch("https://api.github.com/users/supreetsingh247").then(response => response.json())
+    //   .then(data => { this.setState({ user: data }) });
   }
   render() {
     const { repos } = this.state;

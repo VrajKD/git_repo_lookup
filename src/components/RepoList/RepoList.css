@@ -2,3 +2,17 @@
     width:100%;
     padding-left: 5%;
 }
+
+@media (orientation: portrait) and (max-width : 1000px){
+    .repo-list{
+        padding-left: 0%;
+    }
+    .css-tlfecz-indicatorContainer,.css-1gtu0rj-indicatorContainer{
+        padding:0.25em!important;
+    }
+    .css-6q0nyr-Svg,.css-19bqh2r{
+        width:10px;
+        height: 10px;
+    }
+    
+}

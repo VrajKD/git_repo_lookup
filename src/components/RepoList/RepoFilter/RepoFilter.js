@@ -31,9 +31,11 @@ class RepoFilter extends React.Component {
             { value: 'Forks', label: 'Forks' },
         ];
         const colourStyles = {
-            control: styles => ({ ...styles, backgroundImage: 'linear-gradient(-180deg,#fafbfc,#eff3f6 90%)', color: "#24292e", padding: 0, borderRadius: 0, fontSize: "14px" }),
-            option: styles => ({ ...styles, backgroundColor: '', borderBottom: '0.5px solid lightgray', color: "#24292e", padding: 8, fontSize: "12px" }),
-            singleValue: styles => ({ ...styles, color: "#24292e" }),
+            control: styles => ({ ...styles, backgroundImage: 'linear-gradient(-180deg,#fafbfc,#eff3f6 90%)', color: "#24292e", fontSize: "0.8em", minHeight: "12px", padding: 0 }),
+            option: styles => ({ ...styles, borderBottom: '0.5px solid lightgray', color: '#24292e', fontSize: '0.8em' }),
+            indicatorsContainer: styles => ({ ...styles, color: "#24292e", fontSize: "0.4em", padding: "0em" }),
+            indicatorContainer: styles => ({ ...styles, color: "#24292e", fontSize: "0.4em", padding: "0em" }),
+            dropdownContainer: styles => ({ ...styles, color: "#24292e", fontSize: "0.4em", padding: "0em" }),
             placeholder: styles => ({ ...styles, color: "#24292e" }),
         }
         return (
