@@ -28,13 +28,13 @@
     background-image:linear-gradient(-180deg,#fafbfc,#eff3f6 90%); 
     background-color: #eff3f6;
     margin:1.25em 0;
-    border:1px solid #586069;
+    border:1px solid lightgrey;
 }
 .user-follow:hover{
     background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
 }
 .user-desc{
-    margin-top : 1em;
+    margin-top : 0.5em;
 }
 .user-work-info{
     color: #24292e;
